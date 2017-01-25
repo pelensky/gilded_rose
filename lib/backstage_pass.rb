@@ -9,15 +9,12 @@ class BackstagePass < Item
   end
 
   def update_quality
-    @quality += 1 if over_ten_days
-    @quality += 2 if six_to_ten_days
-    @quality += 3 if zero_to_five_days
-    set_quality_to_zero if past_sell_by_date
-    set_quality_to_50 if quality_over_50
+    follow_quality_rules
+    set_quality_to_zero if past_sell_by_date?
+    set_quality_to_fifty if quality_over_50?
   end
 
   private
-
   def over_ten_days
     @sell_in > 10
   end
@@ -30,7 +27,25 @@ class BackstagePass < Item
     @sell_in > 0 && @sell_in < 6
   end
 
-  def past_sell_by_date
+  def increase_quality_by_one
+    @quality += 1
+  end
+
+  def increase_quality_by_three
+    @quality += 3
+  end
+
+  def increase_quality_by_two
+    @quality += 2
+  end
+
+  def follow_quality_rules
+    increase_quality_by_one if over_ten_days
+    increase_quality_by_two if six_to_ten_days
+    increase_quality_by_three if zero_to_five_days
+  end
+
+  def past_sell_by_date?
     @sell_in <= 0
   end
 
@@ -38,11 +53,11 @@ class BackstagePass < Item
     @quality = 0
   end
 
-  def set_quality_to_50
+  def set_quality_to_fifty
     @quality = 50
   end
 
-  def quality_over_50
+  def quality_over_50?
     @quality > 50
   end
 

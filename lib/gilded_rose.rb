@@ -21,7 +21,6 @@ class GildedRose
   end
 
   private
-
   def special_item(item)
     item.is_a?(AgedBrie) || item.is_a?(BackstagePass) || item.is_a?(Sulfuras) || item.is_a?(Conjured)
   end
