@@ -10,4 +10,10 @@ describe GildedRose do
     end
   end
 
+  describe "sell_in" do
+    it "shuld go down by one each day" do
+      
+    end
+  end
+
 end

@@ -6,14 +6,13 @@ describe Item do
     it "initializes with a name" do
       expect(item.name).to eq "name"
     end
-
     it "initializes with a sell_in number" do
       expect(item.sell_in).to be_a_kind_of(Integer)
     end
-
     it "initializes with a quality number" do
       expect(item.quality).to be_a_kind_of(Integer)
     end
+
   end
 
   context "#to_s" do
