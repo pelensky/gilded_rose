@@ -15,10 +15,24 @@ describe GildedRose do
     end
   end
 
-  describe "#update_quality" do
-    it "should decrease the quality of normal items" do
+  describe "#each_day" do
+    before(:each) do
       gilded_rose.each_day
+    end
+    it "should decrease the quality of normal items" do
       expect(gilded_rose.items[0].quality).to eq 4
+    end
+
+    it "should call the update_quality method for AgedBrie" do
+      expect(gilded_rose.items[1].quality).to eq 6
+    end
+
+    it "should call the update_quality method for BackstagePass" do
+      expect(gilded_rose.items[2].quality).to eq 8
+    end
+
+    it "should call the update_quality method for AgedBrie" do
+      expect(gilded_rose.items[3].quality).to eq Float::INFINITY
     end
   end
 

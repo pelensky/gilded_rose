@@ -14,13 +14,14 @@ class GildedRose
 
   def each_day
     @items.each do |item|
-      if item.is_a?(Item)
-        item.quality -= 1
-      else
+      if item.is_a?(AgedBrie) || item.is_a?(BackstagePass) || item.is_a?(Sulfuras)
         item.update_quality
+      else
+        item.quality -= 1
       end
     end
   end
+
 
 
 end
