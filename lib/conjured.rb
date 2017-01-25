@@ -9,17 +9,12 @@ class Conjured < Item
   end
 
   def update_quality
-    if past_sell_by_date
-      @quality -= 4
-    else
-      @quality -= 2
-    end
+    past_sell_by_date ? @quality -= 4 :  @quality -= 2
     set_quality_to_zero if quality_below_zero
   end
 
 
   private
-
   def quality_below_zero
     @quality <= 0
   end

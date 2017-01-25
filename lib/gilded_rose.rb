@@ -15,15 +15,11 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      item.sell_in -= 1
+      reduce_sell_in_date_by_one(item)
       if special_item(item)
         item.update_quality
       else
-        if past_sell_by_date(item)
-          quality_decreases_by_two(item)
-        else
-          update_item_quality(item)
-        end
+        past_sell_by_date(item) ? quality_decreases_by_two(item) : quality_decreases_by_one(item)
         quality_equals_zero(item) if quality_below_zero(item)
       end
     end
@@ -35,7 +31,7 @@ class GildedRose
     item.is_a?(AgedBrie) || item.is_a?(BackstagePass) || item.is_a?(Sulfuras) || item.is_a?(Conjured)
   end
 
-  def update_item_quality(item)
+  def quality_decreases_by_one(item)
     item.quality -= 1
   end
 
@@ -54,6 +50,11 @@ class GildedRose
   def quality_decreases_by_two(item)
     item.quality -= 2
   end
+
+  def reduce_sell_in_date_by_one(item)
+    item.sell_in -= 1
+  end
+
 
 
 end
