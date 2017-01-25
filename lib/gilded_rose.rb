@@ -18,13 +18,19 @@ class GildedRose
       if special_item(item)
         item.update_quality
       else
-        item.quality -= 1
+        update_item_quality(item)
       end
     end
   end
 
+  private
+
   def special_item(item)
     item.is_a?(AgedBrie) || item.is_a?(BackstagePass) || item.is_a?(Sulfuras)
+  end
+
+  def update_item_quality(item)
+    item.quality -= 1
   end
 
 
