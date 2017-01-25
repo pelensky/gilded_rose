@@ -19,6 +19,8 @@ class GildedRose
         item.update_quality
       else
         update_item_quality(item)
+        quality_equals_zero(item) if quality_below_zero(item)
+
       end
     end
   end
@@ -31,6 +33,14 @@ class GildedRose
 
   def update_item_quality(item)
     item.quality -= 1
+  end
+
+  def quality_below_zero(item)
+    item.quality < 0
+  end
+
+  def quality_equals_zero(item)
+    item.quality = 0
   end
 
 

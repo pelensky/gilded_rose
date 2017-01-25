@@ -40,23 +40,31 @@ describe GildedRose do
         before(:each) do
           gilded_rose.each_day
         end
-        context "should reduce the sell by date of each item where appropriate" do
 
-          it "of normal items" do
-            expect(gilded_rose.items[0].sell_in).to eq 4
-          end
+        it "of normal items" do
+          expect(gilded_rose.items[0].sell_in).to eq 4
+        end
 
-          it "for AgedBrie" do
-            expect(gilded_rose.items[1].sell_in).to eq 4
-          end
+        it "for AgedBrie" do
+          expect(gilded_rose.items[1].sell_in).to eq 4
+        end
 
-          it "for BackstagePass" do
-            expect(gilded_rose.items[2].sell_in).to eq 4
-          end
+        it "for BackstagePass" do
+          expect(gilded_rose.items[2].sell_in).to eq 4
+        end
 
-          it "for AgedBrie" do
-            expect(gilded_rose.items[3].sell_in).to eq Float::INFINITY
-          end
+        it "for AgedBrie" do
+          expect(gilded_rose.items[3].sell_in).to eq Float::INFINITY
         end
       end
+
+      describe "item quality" do
+        it "should never be negative" do
+          gilded_rose.items[0].quality = 0
+          gilded_rose.each_day
+          expect(gilded_rose.items[0].quality).to eq 0
+        end
+      end
+
+
     end
