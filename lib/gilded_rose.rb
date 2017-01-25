@@ -1,5 +1,4 @@
-#controls the store
-
+#controls the inn
 require_relative 'item'
 require_relative 'aged_brie'
 require_relative 'sulfuras'
@@ -13,23 +12,15 @@ class GildedRose
     @items = items
   end
 
-  def
-
-  def update_quality()
+  def each_day
     @items.each do |item|
-
-        if item.quality > 0
+      if item.is_a?(Item)
+        item.quality -= 1
       else
-        if item.quality < 50
-          item.quality = item.quality + 1
-        end
-      end
-    end
-    if item.sell_in < 0
-          if item.quality > 0
-        else
-          item.quality = item.quality - item.quality
-        end
+        item.update_quality
       end
     end
   end
+
+
+end
