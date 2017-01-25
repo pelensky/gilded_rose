@@ -64,6 +64,12 @@ describe GildedRose do
           gilded_rose.each_day
           expect(gilded_rose.items[0].quality).to eq 0
         end
+
+        it "degrades twice as fast if past sell by date" do
+          gilded_rose.items[0].sell_in = -1
+          gilded_rose.each_day
+          expect(gilded_rose.items[0].quality).to eq 3
+        end
       end
 
 

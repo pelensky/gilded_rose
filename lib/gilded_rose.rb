@@ -18,9 +18,12 @@ class GildedRose
       if special_item(item)
         item.update_quality
       else
-        update_item_quality(item)
+        if past_sell_by_date(item)
+          quality_decreases_by_two(item)
+        else
+          update_item_quality(item)
+        end
         quality_equals_zero(item) if quality_below_zero(item)
-
       end
     end
   end
@@ -41,6 +44,14 @@ class GildedRose
 
   def quality_equals_zero(item)
     item.quality = 0
+  end
+
+  def past_sell_by_date(item)
+    item.sell_in <= 0
+  end
+
+  def quality_decreases_by_two(item)
+    item.quality -= 2
   end
 
 
