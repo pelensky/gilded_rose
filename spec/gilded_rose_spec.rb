@@ -15,9 +15,9 @@ describe GildedRose do
         end
       end
 
-      describe "#each_day" do
+      describe "#update_quality" do
         before(:each) do
-          gilded_rose.each_day
+          gilded_rose.update_quality
         end
         it "should decrease the quality of normal items" do
           expect(gilded_rose.items[0].quality).to eq 4
@@ -38,7 +38,7 @@ describe GildedRose do
 
       describe "reduce sell by date" do
         before(:each) do
-          gilded_rose.each_day
+          gilded_rose.update_quality
         end
 
         it "of normal items" do
@@ -61,13 +61,13 @@ describe GildedRose do
       describe "item quality" do
         it "should never be negative" do
           gilded_rose.items[0].quality = 0
-          gilded_rose.each_day
+          gilded_rose.update_quality
           expect(gilded_rose.items[0].quality).to eq 0
         end
 
         it "degrades twice as fast if past sell by date" do
           gilded_rose.items[0].sell_in = -1
-          gilded_rose.each_day
+          gilded_rose.update_quality
           expect(gilded_rose.items[0].quality).to eq 3
         end
       end

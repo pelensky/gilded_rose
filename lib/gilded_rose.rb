@@ -3,6 +3,7 @@ require_relative 'item'
 require_relative 'aged_brie'
 require_relative 'sulfuras'
 require_relative 'backstage_pass'
+require_relative 'conjured'
 
 class GildedRose
 
@@ -12,7 +13,7 @@ class GildedRose
     @items = items
   end
 
-  def each_day
+  def update_quality
     @items.each do |item|
       item.sell_in -= 1
       if special_item(item)
