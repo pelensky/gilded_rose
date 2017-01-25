@@ -2,7 +2,8 @@ describe GildedRose do
   subject(:gilded_rose){ described_class.new(
     [Item.new("Item", 5, 5),
       AgedBrie.new("Aged Brie", 5, 5), BackstagePass.new("Backstage Pass", 5, 5),
-      Sulfuras.new]) }
+      Sulfuras.new,
+      Conjured.new("Conjured", 5, 5)])}
       # let(:item){ double(:item).with(name = "Aged Brie", sell_in = 5, quality = 5) }
       # let(:aged_brie){ double :aged_brie.with("Aged Brie", 5, 5) }
       # let(:backstage_pass){ double :backstage_pass.with("Backstage Pass", 5, 5) }
@@ -34,6 +35,10 @@ describe GildedRose do
         it "should call the update_quality method for AgedBrie" do
           expect(gilded_rose.items[3].quality).to eq Float::INFINITY
         end
+
+        it "should call the update_quality method for Conjured" do
+          expect(gilded_rose.items[4].quality).to eq 3
+        end
       end
 
       describe "reduce sell by date" do
@@ -55,6 +60,10 @@ describe GildedRose do
 
         it "for AgedBrie" do
           expect(gilded_rose.items[3].sell_in).to eq Float::INFINITY
+        end
+
+        it "for Conjured" do
+          expect(gilded_rose.items[4].sell_in).to eq 4
         end
       end
 
