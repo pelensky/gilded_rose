@@ -14,7 +14,7 @@ class GildedRose
 
   def each_day
     @items.each do |item|
-      if item.is_a?(AgedBrie) || item.is_a?(BackstagePass) || item.is_a?(Sulfuras)
+      if special_item(item)
         item.update_quality
       else
         item.quality -= 1
@@ -22,6 +22,9 @@ class GildedRose
     end
   end
 
+  def special_item(item)
+    item.is_a?(AgedBrie) || item.is_a?(BackstagePass) || item.is_a?(Sulfuras)
+  end
 
 
 end
