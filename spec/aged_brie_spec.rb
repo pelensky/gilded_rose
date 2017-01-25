@@ -37,10 +37,17 @@ describe AgedBrie do
     end
 
     it "if there are between 0 and 5 days, quality increases by three" do
-      aged_brie.sell_in = 0
+      aged_brie.sell_in = 1
       aged_brie.quality = 10
       aged_brie.update_quality
       expect(aged_brie.quality).to eq 13
+    end
+
+    it "quality goes down to zero after sell by date" do
+      aged_brie.sell_in = 0
+      aged_brie.quality = 10
+      aged_brie.update_quality
+      expect(aged_brie.quality).to eq 0
     end
 
   end

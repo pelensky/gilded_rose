@@ -10,6 +10,7 @@ class AgedBrie < Item
     @quality += 1 if over_ten_days
     @quality += 2 if six_to_ten_days
     @quality += 3 if zero_to_five_days
+    set_quality_to_zero if past_sell_by_date
     set_quality_to_50 if quality_over_50
   end
 
@@ -24,7 +25,15 @@ class AgedBrie < Item
   end
 
   def zero_to_five_days
-    @sell_in >= 0 && @sell_in < 6
+    @sell_in > 0 && @sell_in < 6
+  end
+
+  def past_sell_by_date
+    @sell_in <= 0
+  end
+
+  def set_quality_to_zero
+    @quality = 0
   end
 
   def set_quality_to_50
