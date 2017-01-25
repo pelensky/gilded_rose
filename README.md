@@ -1,4 +1,15 @@
-# Gilded rose tech test
+### Tech Test Week
+### Week Ten
+
+The purpose of this project is to complete a tech test in a day.
+
+Instructions
+-------
+* Clone the repo
+* Run `bundle` to install gems
+* Run `rspec` to see all tests pass
+
+## Specifications
 
 This is a well known kata developed by [Terry Hughes](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/). This is commonly used as a tech test to assess a candidate's ability to read, refactor and extend legacy code.
 
