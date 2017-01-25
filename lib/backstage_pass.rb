@@ -1,6 +1,8 @@
+# responsibilities for backsgtage passes
+
 class BackstagePass < Item
 
-  def initialize(name = ("Backstage Pass"), sell_in, quality)
+  def initialize(name = "Backstage Pass", sell_in, quality)
     @name = name
     @sell_in = sell_in
     @quality = quality

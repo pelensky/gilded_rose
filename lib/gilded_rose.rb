@@ -1,3 +1,5 @@
+#controls the store
+
 require_relative 'item'
 require_relative 'aged_brie'
 require_relative 'sulfuras'
@@ -10,6 +12,8 @@ class GildedRose
   def initialize(items)
     @items = items
   end
+
+  def
 
   def update_quality()
     @items.each do |item|

@@ -1,3 +1,5 @@
+# responsibilities for aged brie
+
 class AgedBrie < Item
 
   def initialize(name = "Aged Brie", sell_in, quality)

@@ -1,3 +1,4 @@
+# responsibilities for sulfuras
 class Sulfuras < Item
   SELL_IN = Float::INFINITY
   QUALITY = Float::INFINITY
