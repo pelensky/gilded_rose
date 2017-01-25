@@ -29,7 +29,7 @@ describe AgedBrie do
       expect(aged_brie.quality).to eq 11
     end
 
-    it "quality goes down to zero after sell by date" do
+    it "quality goes down twice as fast after sell by date" do
       aged_brie.sell_in = 0
       aged_brie.quality = 10
       aged_brie.update_quality
