@@ -1,4 +1,4 @@
-describe AgedBrie do
+describe AgedBrieOrBackstagePass do
   subject(:aged_brie){ described_class.new("Aged Brie", 5, 5)}
 
   context "#initialize" do
