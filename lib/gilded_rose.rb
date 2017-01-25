@@ -14,6 +14,7 @@ class GildedRose
 
   def each_day
     @items.each do |item|
+      item.sell_in -= 1
       if special_item(item)
         item.update_quality
       else
