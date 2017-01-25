@@ -9,11 +9,14 @@ class AgedBrie < Item
   end
 
   def update_quality
-    @quality += 1
+    increase_quality_by_one
     set_quality_to_50 if quality_over_50
   end
 
   private
+  def increase_quality_by_one
+    @quality += 1
+  end
 
   def set_quality_to_50
     @quality = 50
